@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <script src="./src/echarts.js"></script>
+</head>
+<body>
+    <div id="main" style="width:100%;height:600px;"></div>
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('main'));
+   
+        var option = {
+            xAxis: {
+                type: 'category',
+                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            },
+            yAxis: {
+                type: 'value'
+            },
+             series : [
+                {
+                    name:'直接访问',
+                    type:'bar',
+                    barWidth: '60%',
+                    data:[10, 52, 200, 334, 390, 330, 220],
+                    itemStyle:{
+                        normal:{
+                            color:function(params){
+                                if(params.value >0 && params.value <100){
+                                    return "#FE8463";
+                                }else if(params.value >=100 && params.value<=300 ){
+                                    return "#27727B";
+                                }
+                                return "#9BCA63";
+                            },
+                            label: {
+                              show: true,
+                              position: 'top',
+                              textStyle: {
+                                color: function(params){
+                                    if(params.value >0 && params.value <100){
+                                        return "#FE8463";
+                                    }else if(params.value >=100 && params.value<=300 ){
+                                        return "#27727B";
+                                    }
+                                    return "#9BCA63";
+                                }
+                          }
+                       }
+                        }
+                    }
+                }
+            ]
+        };
+        myChart.setOption(option);
+    </script>
+</body>
+</html>
