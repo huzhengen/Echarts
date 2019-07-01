@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <script src="./src/echarts.js"></script>
+</head>
+
+<body>
+<div id="main" style="width:100%;height:600px;"></div>
+<script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('main'));
+
+    var option = {
+        dataZoom: [{
+            type:'inside',
+            start:0,
+            end:50,
+        }],
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: ['2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020'],
+            splitLine:{
+                show:false,
+            },
+            axisPointer:{
+                show:true,
+            }
+        },
+        yAxis: {
+            type: 'value',
+            max: '0.5'
+        },
+        series: [{
+            name: '直接访问',
+            type: 'line',
+            barWidth: '60%',
+            data: [0.23, 0.27, 0.25, 0.24, 0.26, 0.24, 0.27, 0.37, 0.39],
+            itemStyle: {
+                normal: {
+                    lineStyle:{
+                        color: 'rgb(81, 89, 255)',
+                    },
+                    label: {
+                        show: true,
+                        position: 'top',
+                    },
+                    color: function (params) {
+                        if (params.value > 0.3) {
+                            return "red";
+                        }
+                        return "rgb(81, 89, 255)";
+                    },
+
+                }
+            }
+        }]
+    };
+    myChart.setOption(option);
+</script>
+</body>
+
+</html>
