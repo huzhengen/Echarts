@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/huzhengen/Echarts#readme",
   "dependencies": {
-    "echarts": "^4.1.0"
+    "echarts": "^5.4.2"
   }
 }
